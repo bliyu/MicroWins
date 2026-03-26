@@ -1,0 +1,663 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F92469992F74DFF30066EBB6 /* MicroWinsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92469982F74DFF30066EBB6 /* MicroWinsApp.swift */; };
+		F924699B2F74DFF30066EBB6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F924699A2F74DFF30066EBB6 /* ContentView.swift */; };
+		F924699D2F74DFF50066EBB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F924699C2F74DFF50066EBB6 /* Assets.xcassets */; };
+		F92469A02F74DFF50066EBB6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F924699F2F74DFF50066EBB6 /* Preview Assets.xcassets */; };
+		F92469AA2F74DFF60066EBB6 /* MicroWinsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92469A92F74DFF60066EBB6 /* MicroWinsTests.swift */; };
+		F92469B42F74DFF60066EBB6 /* MicroWinsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92469B32F74DFF60066EBB6 /* MicroWinsUITests.swift */; };
+		F92469B62F74DFF60066EBB6 /* MicroWinsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92469B52F74DFF60066EBB6 /* MicroWinsUITestsLaunchTests.swift */; };
+		F92469C72F74E2520066EBB6 /* MicroWin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92469C62F74E2520066EBB6 /* MicroWin.swift */; };
+		F92469C92F74E27E0066EBB6 /* MoodEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92469C82F74E27E0066EBB6 /* MoodEntry.swift */; };
+		F92469CF2F74E2CE0066EBB6 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92469CE2F74E2CE0066EBB6 /* SplashView.swift */; };
+		F92469D12F74E3100066EBB6 /* HomeDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92469D02F74E3100066EBB6 /* HomeDashboardView.swift */; };
+		F92469D32F74E3340066EBB6 /* AddMicroWinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92469D22F74E3340066EBB6 /* AddMicroWinView.swift */; };
+		F92469D52F74E3500066EBB6 /* MicroWinsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92469D42F74E3500066EBB6 /* MicroWinsListView.swift */; };
+		F92469D72F74E3690066EBB6 /* MoodCheckInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92469D62F74E3690066EBB6 /* MoodCheckInView.swift */; };
+		F92469DA2F74E3920066EBB6 /* WeeklySummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92469D92F74E3920066EBB6 /* WeeklySummaryView.swift */; };
+		F92469DC2F74E3BB0066EBB6 /* InfoFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92469DB2F74E3BB0066EBB6 /* InfoFooterView.swift */; };
+		F92469DE2F74F3C60066EBB6 /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92469DD2F74F3C60066EBB6 /* RootTabView.swift */; };
+		F92469E02F74F3E00066EBB6 /* MicroWinsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92469DF2F74F3E00066EBB6 /* MicroWinsStore.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F92469A62F74DFF60066EBB6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F924698D2F74DFF30066EBB6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F92469942F74DFF30066EBB6;
+			remoteInfo = MicroWins;
+		};
+		F92469B02F74DFF60066EBB6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F924698D2F74DFF30066EBB6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F92469942F74DFF30066EBB6;
+			remoteInfo = MicroWins;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F92469952F74DFF30066EBB6 /* MicroWins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MicroWins.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F92469982F74DFF30066EBB6 /* MicroWinsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroWinsApp.swift; sourceTree = "<group>"; };
+		F924699A2F74DFF30066EBB6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F924699C2F74DFF50066EBB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F924699F2F74DFF50066EBB6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F92469A52F74DFF60066EBB6 /* MicroWinsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MicroWinsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F92469A92F74DFF60066EBB6 /* MicroWinsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroWinsTests.swift; sourceTree = "<group>"; };
+		F92469AF2F74DFF60066EBB6 /* MicroWinsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MicroWinsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F92469B32F74DFF60066EBB6 /* MicroWinsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroWinsUITests.swift; sourceTree = "<group>"; };
+		F92469B52F74DFF60066EBB6 /* MicroWinsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroWinsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F92469C62F74E2520066EBB6 /* MicroWin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroWin.swift; sourceTree = "<group>"; };
+		F92469C82F74E27E0066EBB6 /* MoodEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodEntry.swift; sourceTree = "<group>"; };
+		F92469CE2F74E2CE0066EBB6 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		F92469D02F74E3100066EBB6 /* HomeDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDashboardView.swift; sourceTree = "<group>"; };
+		F92469D22F74E3340066EBB6 /* AddMicroWinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMicroWinView.swift; sourceTree = "<group>"; };
+		F92469D42F74E3500066EBB6 /* MicroWinsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroWinsListView.swift; sourceTree = "<group>"; };
+		F92469D62F74E3690066EBB6 /* MoodCheckInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCheckInView.swift; sourceTree = "<group>"; };
+		F92469D92F74E3920066EBB6 /* WeeklySummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklySummaryView.swift; sourceTree = "<group>"; };
+		F92469DB2F74E3BB0066EBB6 /* InfoFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoFooterView.swift; sourceTree = "<group>"; };
+		F92469DD2F74F3C60066EBB6 /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
+		F92469DF2F74F3E00066EBB6 /* MicroWinsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroWinsStore.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F92469922F74DFF30066EBB6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F92469A22F74DFF60066EBB6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F92469AC2F74DFF60066EBB6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F924698C2F74DFF30066EBB6 = {
+			isa = PBXGroup;
+			children = (
+				F92469972F74DFF30066EBB6 /* MicroWins */,
+				F92469A82F74DFF60066EBB6 /* MicroWinsTests */,
+				F92469B22F74DFF60066EBB6 /* MicroWinsUITests */,
+				F92469962F74DFF30066EBB6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F92469962F74DFF30066EBB6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F92469952F74DFF30066EBB6 /* MicroWins.app */,
+				F92469A52F74DFF60066EBB6 /* MicroWinsTests.xctest */,
+				F92469AF2F74DFF60066EBB6 /* MicroWinsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F92469972F74DFF30066EBB6 /* MicroWins */ = {
+			isa = PBXGroup;
+			children = (
+				F92469C22F74E1A40066EBB6 /* Models */,
+				F92469C32F74E1BF0066EBB6 /* ViewModels */,
+				F92469C42F74E1E30066EBB6 /* Views */,
+				F92469982F74DFF30066EBB6 /* MicroWinsApp.swift */,
+				F924699A2F74DFF30066EBB6 /* ContentView.swift */,
+				F924699C2F74DFF50066EBB6 /* Assets.xcassets */,
+				F924699E2F74DFF50066EBB6 /* Preview Content */,
+			);
+			path = MicroWins;
+			sourceTree = "<group>";
+		};
+		F924699E2F74DFF50066EBB6 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F924699F2F74DFF50066EBB6 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F92469A82F74DFF60066EBB6 /* MicroWinsTests */ = {
+			isa = PBXGroup;
+			children = (
+				F92469A92F74DFF60066EBB6 /* MicroWinsTests.swift */,
+			);
+			path = MicroWinsTests;
+			sourceTree = "<group>";
+		};
+		F92469B22F74DFF60066EBB6 /* MicroWinsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F92469B32F74DFF60066EBB6 /* MicroWinsUITests.swift */,
+				F92469B52F74DFF60066EBB6 /* MicroWinsUITestsLaunchTests.swift */,
+			);
+			path = MicroWinsUITests;
+			sourceTree = "<group>";
+		};
+		F92469C22F74E1A40066EBB6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F92469C62F74E2520066EBB6 /* MicroWin.swift */,
+				F92469C82F74E27E0066EBB6 /* MoodEntry.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F92469C32F74E1BF0066EBB6 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F92469DF2F74F3E00066EBB6 /* MicroWinsStore.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F92469C42F74E1E30066EBB6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F92469C52F74E1F10066EBB6 /* Components */,
+				F92469CE2F74E2CE0066EBB6 /* SplashView.swift */,
+				F92469D02F74E3100066EBB6 /* HomeDashboardView.swift */,
+				F92469D22F74E3340066EBB6 /* AddMicroWinView.swift */,
+				F92469D42F74E3500066EBB6 /* MicroWinsListView.swift */,
+				F92469D62F74E3690066EBB6 /* MoodCheckInView.swift */,
+				F92469D92F74E3920066EBB6 /* WeeklySummaryView.swift */,
+				F92469DD2F74F3C60066EBB6 /* RootTabView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F92469C52F74E1F10066EBB6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F92469DB2F74E3BB0066EBB6 /* InfoFooterView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F92469942F74DFF30066EBB6 /* MicroWins */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F92469B92F74DFF60066EBB6 /* Build configuration list for PBXNativeTarget "MicroWins" */;
+			buildPhases = (
+				F92469912F74DFF30066EBB6 /* Sources */,
+				F92469922F74DFF30066EBB6 /* Frameworks */,
+				F92469932F74DFF30066EBB6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MicroWins;
+			productName = MicroWins;
+			productReference = F92469952F74DFF30066EBB6 /* MicroWins.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F92469A42F74DFF60066EBB6 /* MicroWinsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F92469BC2F74DFF60066EBB6 /* Build configuration list for PBXNativeTarget "MicroWinsTests" */;
+			buildPhases = (
+				F92469A12F74DFF60066EBB6 /* Sources */,
+				F92469A22F74DFF60066EBB6 /* Frameworks */,
+				F92469A32F74DFF60066EBB6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F92469A72F74DFF60066EBB6 /* PBXTargetDependency */,
+			);
+			name = MicroWinsTests;
+			productName = MicroWinsTests;
+			productReference = F92469A52F74DFF60066EBB6 /* MicroWinsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F92469AE2F74DFF60066EBB6 /* MicroWinsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F92469BF2F74DFF60066EBB6 /* Build configuration list for PBXNativeTarget "MicroWinsUITests" */;
+			buildPhases = (
+				F92469AB2F74DFF60066EBB6 /* Sources */,
+				F92469AC2F74DFF60066EBB6 /* Frameworks */,
+				F92469AD2F74DFF60066EBB6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F92469B12F74DFF60066EBB6 /* PBXTargetDependency */,
+			);
+			name = MicroWinsUITests;
+			productName = MicroWinsUITests;
+			productReference = F92469AF2F74DFF60066EBB6 /* MicroWinsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F924698D2F74DFF30066EBB6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					F92469942F74DFF30066EBB6 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					F92469A42F74DFF60066EBB6 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = F92469942F74DFF30066EBB6;
+					};
+					F92469AE2F74DFF60066EBB6 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = F92469942F74DFF30066EBB6;
+					};
+				};
+			};
+			buildConfigurationList = F92469902F74DFF30066EBB6 /* Build configuration list for PBXProject "MicroWins" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F924698C2F74DFF30066EBB6;
+			productRefGroup = F92469962F74DFF30066EBB6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F92469942F74DFF30066EBB6 /* MicroWins */,
+				F92469A42F74DFF60066EBB6 /* MicroWinsTests */,
+				F92469AE2F74DFF60066EBB6 /* MicroWinsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F92469932F74DFF30066EBB6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F92469A02F74DFF50066EBB6 /* Preview Assets.xcassets in Resources */,
+				F924699D2F74DFF50066EBB6 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F92469A32F74DFF60066EBB6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F92469AD2F74DFF60066EBB6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F92469912F74DFF30066EBB6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F92469DC2F74E3BB0066EBB6 /* InfoFooterView.swift in Sources */,
+				F924699B2F74DFF30066EBB6 /* ContentView.swift in Sources */,
+				F92469992F74DFF30066EBB6 /* MicroWinsApp.swift in Sources */,
+				F92469D52F74E3500066EBB6 /* MicroWinsListView.swift in Sources */,
+				F92469C72F74E2520066EBB6 /* MicroWin.swift in Sources */,
+				F92469D72F74E3690066EBB6 /* MoodCheckInView.swift in Sources */,
+				F92469D32F74E3340066EBB6 /* AddMicroWinView.swift in Sources */,
+				F92469DA2F74E3920066EBB6 /* WeeklySummaryView.swift in Sources */,
+				F92469C92F74E27E0066EBB6 /* MoodEntry.swift in Sources */,
+				F92469D12F74E3100066EBB6 /* HomeDashboardView.swift in Sources */,
+				F92469DE2F74F3C60066EBB6 /* RootTabView.swift in Sources */,
+				F92469E02F74F3E00066EBB6 /* MicroWinsStore.swift in Sources */,
+				F92469CF2F74E2CE0066EBB6 /* SplashView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F92469A12F74DFF60066EBB6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F92469AA2F74DFF60066EBB6 /* MicroWinsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F92469AB2F74DFF60066EBB6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F92469B62F74DFF60066EBB6 /* MicroWinsUITestsLaunchTests.swift in Sources */,
+				F92469B42F74DFF60066EBB6 /* MicroWinsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F92469A72F74DFF60066EBB6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F92469942F74DFF30066EBB6 /* MicroWins */;
+			targetProxy = F92469A62F74DFF60066EBB6 /* PBXContainerItemProxy */;
+		};
+		F92469B12F74DFF60066EBB6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F92469942F74DFF30066EBB6 /* MicroWins */;
+			targetProxy = F92469B02F74DFF60066EBB6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F92469B72F74DFF60066EBB6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F92469B82F74DFF60066EBB6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F92469BA2F74DFF60066EBB6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MicroWins/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.MicroWins;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F92469BB2F74DFF60066EBB6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MicroWins/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.MicroWins;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F92469BD2F74DFF60066EBB6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.MicroWinsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MicroWins.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MicroWins";
+			};
+			name = Debug;
+		};
+		F92469BE2F74DFF60066EBB6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.MicroWinsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MicroWins.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MicroWins";
+			};
+			name = Release;
+		};
+		F92469C02F74DFF60066EBB6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.MicroWinsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MicroWins;
+			};
+			name = Debug;
+		};
+		F92469C12F74DFF60066EBB6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.MicroWinsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MicroWins;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F92469902F74DFF30066EBB6 /* Build configuration list for PBXProject "MicroWins" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F92469B72F74DFF60066EBB6 /* Debug */,
+				F92469B82F74DFF60066EBB6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F92469B92F74DFF60066EBB6 /* Build configuration list for PBXNativeTarget "MicroWins" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F92469BA2F74DFF60066EBB6 /* Debug */,
+				F92469BB2F74DFF60066EBB6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F92469BC2F74DFF60066EBB6 /* Build configuration list for PBXNativeTarget "MicroWinsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F92469BD2F74DFF60066EBB6 /* Debug */,
+				F92469BE2F74DFF60066EBB6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F92469BF2F74DFF60066EBB6 /* Build configuration list for PBXNativeTarget "MicroWinsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F92469C02F74DFF60066EBB6 /* Debug */,
+				F92469C12F74DFF60066EBB6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F924698D2F74DFF30066EBB6 /* Project object */;
+}
