@@ -2,7 +2,8 @@
 //  SplashView.swift
 //  MicroWins
 //
-//  Author: Blen Abebe
+//  Author: Blen Abebe 
+//  Edited by:
 //  Shalev Haimovitz
 //  Jonathan Ivanov
 //  Melica Alikhani-Marquet
@@ -18,7 +19,7 @@ struct SplashView: View {
             LinearGradient(
                 colors: [
                     Color.black,
-                    Color(red: 0.20, green: 0.00, blue: 0.10),
+                    Color(red: 0.18, green: 0.02, blue: 0.10),
                     Color(red: 0.85, green: 0.25, blue: 0.55)
                 ],
                 startPoint: .topLeading,
@@ -26,33 +27,37 @@ struct SplashView: View {
             )
             .ignoresSafeArea()
 
-            VStack(spacing: 18) {
+            VStack(spacing: 22) {
                 Spacer()
 
                 ZStack {
                     Circle()
                         .fill(Color.white.opacity(0.10))
-                        .frame(width: 110, height: 110)
+                        .frame(width: 118, height: 118)
 
                     Circle()
                         .stroke(Color.white.opacity(0.18), lineWidth: 1.5)
-                        .frame(width: 124, height: 124)
+                        .frame(width: 134, height: 134)
 
                     Image(systemName: "sparkles")
-                        .font(.system(size: 40, weight: .bold))
+                        .font(.system(size: 42, weight: .bold))
                         .foregroundStyle(.white)
                 }
+                .shadow(color: .pink.opacity(0.28), radius: 16, x: 0, y: 8)
 
-                Text("MicroWins")
-                    .font(.system(size: 40, weight: .heavy, design: .rounded))
-                    .foregroundStyle(.white)
+                VStack(spacing: 10) {
+                    Text("MicroWins")
+                        .font(.system(size: 40, weight: .heavy, design: .rounded))
+                        .foregroundStyle(.white)
 
-                Text("Celebrate small wins. Build real confidence.")
-                    .font(.headline)
-                    .foregroundStyle(Color.white.opacity(0.88))
-                    .multilineTextAlignment(.center)
+                    Text("Celebrate small wins. Build real confidence.")
+                        .font(.headline)
+                        .foregroundStyle(Color.white.opacity(0.88))
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 18)
+                }
 
-                VStack(spacing: 6) {
+                VStack(spacing: 8) {
                     Text("Group 14")
                         .font(.headline)
                         .foregroundStyle(.white)
@@ -60,16 +65,19 @@ struct SplashView: View {
                     Text("Blen Abebe")
                     Text("Shalev Haimovitz")
                     Text("Jonathan Ivanov")
-                    Text("Melica Alikhani-Marqueti")
+                    Text("Melica Alikhani-Marquet")
                 }
                 .font(.subheadline)
                 .foregroundStyle(Color.white.opacity(0.85))
+                .multilineTextAlignment(.center)
+                .padding(.horizontal)
 
                 Spacer()
 
                 VStack(spacing: 12) {
                     ProgressView()
                         .tint(.white)
+                        .scaleEffect(1.05)
 
                     Text("Loading your daily motivation...")
                         .font(.caption)
@@ -79,6 +87,7 @@ struct SplashView: View {
             }
             .padding()
         }
+        .statusBarHidden()
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
                 withAnimation(.easeInOut(duration: 0.5)) {

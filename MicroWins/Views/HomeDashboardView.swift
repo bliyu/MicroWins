@@ -2,7 +2,8 @@
 //  HomeDashboardView.swift
 //  MicroWins
 //
-//  Author: Blen Abebe
+//  Author: Blen Abebe - 101213539
+//  Edited by:
 //  Shalev Haimovitz
 //  Jonathan Ivanov
 //  Melica Alikhani-Marquet
@@ -24,40 +25,35 @@ struct HomeDashboardView: View {
 
         switch hour {
         case 5..<12:
-            return "Good morning"
+            return "Good Morning"
         case 12..<17:
-            return "Good afternoon"
+            return "Good Afternoon"
         case 17..<22:
-            return "Good evening"
+            return "Good Evening"
         default:
-            return "Welcome back"
+            return "Welcome Back"
         }
     }
 
     private var motivationText: String {
         if store.totalWins == 0 {
-            return "Start by recording one small win today. Tiny progress still matters."
+            return "Start by recording one small win today."
         } else if store.thisWeekWins >= 5 {
-            return "You are building amazing momentum this week. Keep going."
+            return "Amazing consistency this week. Keep it going."
         } else if store.thisWeekWins >= 1 {
-            return "You are making real progress. Every small win counts."
+            return "Small progress adds up every day."
         } else {
-            return "A fresh week is a fresh chance to grow. Add your next win."
+            return "A fresh week means a fresh start."
         }
+    }
+
+    private var streakText: String {
+        "\(store.thisWeekWins) Day Streak"
     }
 
     var body: some View {
         ZStack {
-            LinearGradient(
-                colors: [
-                    Color.black,
-                    Color(red: 0.10, green: 0.02, blue: 0.07),
-                    Color(red: 0.18, green: 0.03, blue: 0.10)
-                ],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
+            backgroundView
 
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 22) {
@@ -67,7 +63,6 @@ struct HomeDashboardView: View {
                         statCard(
                             title: "Total Wins",
                             value: "\(store.totalWins)",
-                            subtitle: "Your progress so far",
                             icon: "star.fill",
                             tint: .pink
                         )
@@ -75,13 +70,12 @@ struct HomeDashboardView: View {
                         statCard(
                             title: "This Week",
                             value: "\(store.thisWeekWins)",
-                            subtitle: "Wins this week",
                             icon: "calendar",
                             tint: .white
                         )
                     }
 
-                    moodInsightCard
+                    moodCard
                     motivationCard
                     quickActionsSection
                     recentWinsSection
@@ -90,15 +84,29 @@ struct HomeDashboardView: View {
                         .padding(.top, 6)
                 }
                 .padding()
-                .padding(.bottom, 34)
+                .padding(.bottom, 28)
             }
         }
         .navigationTitle("Dashboard")
         .navigationBarTitleDisplayMode(.inline)
     }
 
+    private var backgroundView: some View {
+        LinearGradient(
+            colors: [
+                Color.black,
+                Color(red: 0.10, green: 0.02, blue: 0.08),
+                Color(red: 0.18, green: 0.03, blue: 0.12)
+            ],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+        .ignoresSafeArea()
+    }
+
     private var heroSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 18) {
+
             HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 6) {
                     Text("\(greetingText) ✨")
@@ -114,8 +122,8 @@ struct HomeDashboardView: View {
 
                 ZStack {
                     Circle()
-                        .fill(Color.white.opacity(0.10))
-                        .frame(width: 58, height: 58)
+                        .fill(Color.white.opacity(0.12))
+                        .frame(width: 60, height: 60)
 
                     Image(systemName: "sparkles")
                         .font(.title2)
@@ -123,17 +131,24 @@ struct HomeDashboardView: View {
                 }
             }
 
-            VStack(alignment: .leading, spacing: 8) {
-                Text("Track your progress, reflect on your mood, and celebrate the small wins that move you forward.")
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Celebrate progress, track mood, and stay motivated.")
                     .font(.subheadline)
-                    .foregroundStyle(.white.opacity(0.92))
+                    .foregroundStyle(.white.opacity(0.9))
 
-                ProgressView(value: min(Double(store.thisWeekWins), 7), total: 7)
-                    .tint(.pink)
+                ProgressView(
+                    value: min(Double(store.thisWeekWins), 7),
+                    total: 7
+                )
+                .tint(.pink)
 
-                Text("Weekly goal: \(store.thisWeekWins) / 7 wins")
-                    .font(.caption)
-                    .foregroundStyle(.white.opacity(0.78))
+                HStack {
+                    Text("Weekly Goal: \(store.thisWeekWins) / 7")
+                    Spacer()
+                    Text(streakText)
+                }
+                .font(.caption)
+                .foregroundStyle(.white.opacity(0.75))
             }
         }
         .padding(22)
@@ -148,23 +163,22 @@ struct HomeDashboardView: View {
                 endPoint: .bottomTrailing
             )
         )
+        .clipShape(RoundedRectangle(cornerRadius: 28))
         .overlay(
-            RoundedRectangle(cornerRadius: 30)
+            RoundedRectangle(cornerRadius: 28)
                 .stroke(Color.white.opacity(0.08), lineWidth: 1)
         )
-        .clipShape(RoundedRectangle(cornerRadius: 30))
         .shadow(color: .pink.opacity(0.22), radius: 16, x: 0, y: 8)
     }
 
-    private var moodInsightCard: some View {
+    private var moodCard: some View {
         HStack(spacing: 14) {
             ZStack {
                 Circle()
-                    .fill(Color.pink.opacity(0.14))
-                    .frame(width: 58, height: 58)
+                    .fill(Color.pink.opacity(0.16))
+                    .frame(width: 56, height: 56)
 
-                Image(systemName: "face.smiling.fill")
-                    .font(.title2)
+                Image(systemName: "heart.fill")
                     .foregroundStyle(.pink)
             }
 
@@ -177,28 +191,21 @@ struct HomeDashboardView: View {
                     .font(.title3.bold())
                     .foregroundStyle(.pink)
 
-                Text("Tracking your feelings helps you notice patterns and growth.")
+                Text("Track emotions and notice patterns.")
                     .font(.caption)
-                    .foregroundStyle(.white.opacity(0.68))
+                    .foregroundStyle(.white.opacity(0.7))
             }
 
             Spacer()
         }
         .padding()
-        .background(Color.white.opacity(0.08))
-        .overlay(
-            RoundedRectangle(cornerRadius: 24)
-                .stroke(Color.white.opacity(0.06), lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 24))
+        .cardStyle()
     }
 
     private var motivationCard: some View {
         HStack(alignment: .top, spacing: 12) {
             Image(systemName: "bolt.heart.fill")
-                .font(.title3)
                 .foregroundStyle(.pink)
-                .padding(.top, 2)
 
             VStack(alignment: .leading, spacing: 6) {
                 Text("Daily Motivation")
@@ -213,12 +220,7 @@ struct HomeDashboardView: View {
             Spacer()
         }
         .padding()
-        .background(Color.white.opacity(0.08))
-        .overlay(
-            RoundedRectangle(cornerRadius: 24)
-                .stroke(Color.white.opacity(0.06), lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 24))
+        .cardStyle()
     }
 
     private var quickActionsSection: some View {
@@ -226,14 +228,13 @@ struct HomeDashboardView: View {
             Text("Quick Actions")
                 .font(.headline)
                 .foregroundStyle(.white)
-                .padding(.leading, 2)
 
             NavigationLink {
                 AddMicroWinView()
             } label: {
                 actionCard(
                     title: "Add MicroWin",
-                    subtitle: "Record a small achievement from today",
+                    subtitle: "Save a small success",
                     icon: "plus.circle.fill",
                     tint: .pink
                 )
@@ -243,8 +244,8 @@ struct HomeDashboardView: View {
                 MicroWinsListView()
             } label: {
                 actionCard(
-                    title: "View My Wins",
-                    subtitle: "Look back on your progress",
+                    title: "View Wins",
+                    subtitle: "Review your progress",
                     icon: "list.bullet.rectangle.fill",
                     tint: .white
                 )
@@ -255,7 +256,7 @@ struct HomeDashboardView: View {
             } label: {
                 actionCard(
                     title: "Mood Check-In",
-                    subtitle: "Save how you feel right now",
+                    subtitle: "How do you feel?",
                     icon: "heart.text.square.fill",
                     tint: .pink
                 )
@@ -266,7 +267,7 @@ struct HomeDashboardView: View {
             } label: {
                 actionCard(
                     title: "Weekly Summary",
-                    subtitle: "Review your weekly growth",
+                    subtitle: "Your growth this week",
                     icon: "chart.bar.fill",
                     tint: .white
                 )
@@ -277,7 +278,7 @@ struct HomeDashboardView: View {
     private var recentWinsSection: some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack {
-                Text("Recent MicroWins")
+                Text("Recent Wins")
                     .font(.headline)
                     .foregroundStyle(.white)
 
@@ -285,47 +286,32 @@ struct HomeDashboardView: View {
 
                 Text("\(min(store.microWins.count, 3)) shown")
                     .font(.caption)
-                    .foregroundStyle(.white.opacity(0.62))
+                    .foregroundStyle(.white.opacity(0.6))
             }
 
             if store.microWins.isEmpty {
                 VStack(spacing: 10) {
-                    Image(systemName: "sparkles.rectangle.stack")
+                    Image(systemName: "sparkles")
                         .font(.largeTitle)
-                        .foregroundStyle(.pink.opacity(0.85))
+                        .foregroundStyle(.pink)
 
-                    Text("No MicroWins yet")
-                        .font(.headline)
+                    Text("No wins yet")
                         .foregroundStyle(.white)
 
-                    Text("Your recent achievements will appear here after you add them.")
-                        .font(.subheadline)
-                        .foregroundStyle(.white.opacity(0.68))
-                        .multilineTextAlignment(.center)
+                    Text("Add your first MicroWin today.")
+                        .font(.caption)
+                        .foregroundStyle(.white.opacity(0.7))
                 }
                 .frame(maxWidth: .infinity)
-                .padding(.vertical, 30)
-                .background(Color.white.opacity(0.08))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 24)
-                        .stroke(Color.white.opacity(0.06), lineWidth: 1)
-                )
-                .clipShape(RoundedRectangle(cornerRadius: 24))
+                .padding(.vertical, 26)
+                .cardStyle()
+
             } else {
                 ForEach(store.microWins.prefix(3)) { win in
                     HStack(alignment: .top, spacing: 12) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 14)
-                                .fill(
-                                    LinearGradient(
-                                        colors: [
-                                            Color.pink.opacity(0.22),
-                                            Color.white.opacity(0.10)
-                                        ],
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
-                                    )
-                                )
+                                .fill(Color.pink.opacity(0.18))
                                 .frame(width: 46, height: 46)
 
                             Image(systemName: "checkmark.seal.fill")
@@ -341,21 +327,18 @@ struct HomeDashboardView: View {
                                 .font(.subheadline)
                                 .foregroundStyle(.white.opacity(0.72))
 
-                            Text(win.date.formatted(date: .abbreviated, time: .shortened))
-                                .font(.caption)
-                                .foregroundStyle(.white.opacity(0.55))
+                            Text(win.date.formatted(
+                                date: .abbreviated,
+                                time: .shortened
+                            ))
+                            .font(.caption)
+                            .foregroundStyle(.white.opacity(0.55))
                         }
 
                         Spacer()
                     }
                     .padding()
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(Color.white.opacity(0.08))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 22)
-                            .stroke(Color.white.opacity(0.06), lineWidth: 1)
-                    )
-                    .clipShape(RoundedRectangle(cornerRadius: 22))
+                    .cardStyle()
                 }
             }
         }
@@ -364,46 +347,34 @@ struct HomeDashboardView: View {
     private func statCard(
         title: String,
         value: String,
-        subtitle: String,
         icon: String,
         tint: Color
     ) -> some View {
+
         VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 15)
-                        .fill(tint.opacity(0.16))
-                        .frame(width: 44, height: 44)
 
-                    Image(systemName: icon)
-                        .foregroundStyle(tint)
-                }
+            ZStack {
+                RoundedRectangle(cornerRadius: 14)
+                    .fill(tint.opacity(0.16))
+                    .frame(width: 44, height: 44)
 
-                Spacer()
+                Image(systemName: icon)
+                    .foregroundStyle(tint)
             }
 
             Text(value)
                 .font(.title.bold())
                 .foregroundStyle(.white)
 
-            VStack(alignment: .leading, spacing: 2) {
-                Text(title)
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.white)
+            Text(title)
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(.white)
 
-                Text(subtitle)
-                    .font(.caption)
-                    .foregroundStyle(.white.opacity(0.62))
-            }
+            Spacer()
         }
-        .frame(maxWidth: .infinity, minHeight: 150, alignment: .leading)
+        .frame(maxWidth: .infinity, minHeight: 145)
         .padding()
-        .background(Color.white.opacity(0.08))
-        .overlay(
-            RoundedRectangle(cornerRadius: 24)
-                .stroke(Color.white.opacity(0.06), lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 24))
+        .cardStyle()
     }
 
     private func actionCard(
@@ -412,14 +383,15 @@ struct HomeDashboardView: View {
         icon: String,
         tint: Color
     ) -> some View {
+
         HStack(spacing: 14) {
+
             ZStack {
                 RoundedRectangle(cornerRadius: 16)
                     .fill(tint.opacity(0.16))
-                    .frame(width: 54, height: 54)
+                    .frame(width: 52, height: 52)
 
                 Image(systemName: icon)
-                    .font(.title3)
                     .foregroundStyle(tint)
             }
 
@@ -436,14 +408,21 @@ struct HomeDashboardView: View {
             Spacer()
 
             Image(systemName: "chevron.right")
-                .foregroundStyle(.white.opacity(0.55))
+                .foregroundStyle(.white.opacity(0.5))
         }
         .padding()
-        .background(Color.white.opacity(0.08))
-        .overlay(
-            RoundedRectangle(cornerRadius: 22)
-                .stroke(Color.white.opacity(0.06), lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 22))
+        .cardStyle()
+    }
+}
+
+extension View {
+    func cardStyle() -> some View {
+        self
+            .background(Color.white.opacity(0.08))
+            .overlay(
+                RoundedRectangle(cornerRadius: 22)
+                    .stroke(Color.white.opacity(0.06), lineWidth: 1)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 22))
     }
 }

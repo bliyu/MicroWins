@@ -1,3 +1,14 @@
+//
+//  WeeklySummaryView.swift
+//  MicroWins
+//
+//  Author: Blen Abebe - 101213539
+//  Edited by:
+//  Shalev Haimovitz
+//  Jonathan Ivanov
+//  Melica Alikhani-Marquet
+//
+
 import SwiftUI
 
 struct WeeklySummaryView: View {
@@ -5,39 +16,38 @@ struct WeeklySummaryView: View {
 
     private var weeklyMessage: String {
         if store.thisWeekWins >= 5 {
-            return "Amazing work this week. You stayed consistent and kept showing up for yourself."
+            return "Amazing work this week. You stayed consistent and built strong momentum."
         } else if store.thisWeekWins >= 1 {
-            return "Nice progress this week. Every small step is helping you build momentum."
+            return "Nice progress this week. Every small step matters."
         } else {
-            return "Your week is a fresh opportunity. Start with one small win and build from there."
+            return "A new week is a fresh chance to begin."
+        }
+    }
+
+    private var badgeText: String {
+        if store.thisWeekWins >= 7 {
+            return "🏆 Goal Crusher"
+        } else if store.thisWeekWins >= 5 {
+            return "🔥 On Fire"
+        } else if store.thisWeekWins >= 1 {
+            return "✨ Building Momentum"
+        } else {
+            return "🌱 Fresh Start"
         }
     }
 
     var body: some View {
         ZStack {
-            // 🔥 DARK + PINK BACKGROUND (MATCHES APP)
-            LinearGradient(
-                colors: [
-                    Color.black,
-                    Color(red: 0.08, green: 0.01, blue: 0.06),
-                    Color(red: 0.18, green: 0.03, blue: 0.12)
-                ],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
+            backgroundView
 
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 22) {
-
                     topCard
 
-                    // MARK: STATS
                     HStack(spacing: 14) {
                         statCard(
                             title: "Total Wins",
                             value: "\(store.totalWins)",
-                            subtitle: "All recorded wins",
                             icon: "star.fill",
                             tint: .pink
                         )
@@ -45,7 +55,6 @@ struct WeeklySummaryView: View {
                         statCard(
                             title: "This Week",
                             value: "\(store.thisWeekWins)",
-                            subtitle: "Wins this week",
                             icon: "calendar",
                             tint: .white
                         )
@@ -55,7 +64,6 @@ struct WeeklySummaryView: View {
                         statCard(
                             title: "Mood Entries",
                             value: "\(store.totalMoodEntries)",
-                            subtitle: "Check-ins saved",
                             icon: "heart.fill",
                             tint: .pink
                         )
@@ -63,21 +71,20 @@ struct WeeklySummaryView: View {
                         statCard(
                             title: "Latest Mood",
                             value: store.latestMood,
-                            subtitle: "Most recent feeling",
                             icon: "face.smiling.fill",
                             tint: .white
                         )
                     }
 
+                    badgeCard
                     reflectionCard
                     progressCard
 
                     InfoFooterView()
                         .padding(.top, 6)
                 }
-                .padding(.horizontal, 16)
-                .padding(.top, 10)
-                .padding(.bottom, 30)
+                .padding()
+                .padding(.bottom, 28)
             }
         }
         .navigationTitle("Summary")
@@ -85,16 +92,30 @@ struct WeeklySummaryView: View {
         .toolbarColorScheme(.dark, for: .navigationBar)
     }
 
+    private var backgroundView: some View {
+        LinearGradient(
+            colors: [
+                Color.black,
+                Color(red: 0.08, green: 0.01, blue: 0.06),
+                Color(red: 0.18, green: 0.03, blue: 0.12)
+            ],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+        .ignoresSafeArea()
+    }
+
     // MARK: TOP CARD
     private var topCard: some View {
         VStack(alignment: .leading, spacing: 14) {
+
             HStack {
                 VStack(alignment: .leading, spacing: 6) {
                     Text("Weekly Summary 📈")
                         .font(.title2.bold())
                         .foregroundStyle(.white)
 
-                    Text("Track your growth and reflect on your progress.")
+                    Text("Track your growth and progress.")
                         .font(.subheadline)
                         .foregroundStyle(.white.opacity(0.85))
                 }
@@ -104,7 +125,7 @@ struct WeeklySummaryView: View {
                 ZStack {
                     Circle()
                         .fill(Color.white.opacity(0.10))
-                        .frame(width: 56, height: 56)
+                        .frame(width: 58, height: 58)
 
                     Image(systemName: "chart.line.uptrend.xyaxis")
                         .font(.title2)
@@ -112,10 +133,13 @@ struct WeeklySummaryView: View {
                 }
             }
 
-            ProgressView(value: min(Double(store.thisWeekWins), 7), total: 7)
-                .tint(.pink)
+            ProgressView(
+                value: min(Double(store.thisWeekWins), 7),
+                total: 7
+            )
+            .tint(.pink)
 
-            Text("Weekly goal: \(store.thisWeekWins) / 7 wins")
+            Text("Weekly Goal: \(store.thisWeekWins) / 7 wins")
                 .font(.caption)
                 .foregroundStyle(.white.opacity(0.75))
         }
@@ -123,7 +147,7 @@ struct WeeklySummaryView: View {
         .background(
             LinearGradient(
                 colors: [
-                    Color(red: 1.0, green: 0.20, blue: 0.55),
+                    Color.pink,
                     Color(red: 0.65, green: 0.10, blue: 0.35),
                     Color.black.opacity(0.95)
                 ],
@@ -131,17 +155,34 @@ struct WeeklySummaryView: View {
                 endPoint: .bottomTrailing
             )
         )
+        .clipShape(RoundedRectangle(cornerRadius: 28))
         .overlay(
             RoundedRectangle(cornerRadius: 28)
                 .stroke(Color.pink.opacity(0.35), lineWidth: 1)
         )
-        .clipShape(RoundedRectangle(cornerRadius: 28))
-        .shadow(color: Color.pink.opacity(0.30), radius: 16, x: 0, y: 8)
+        .shadow(color: .pink.opacity(0.30), radius: 16, x: 0, y: 8)
     }
 
-    // MARK: REFLECTION CARD
+    // MARK: BADGE
+    private var badgeCard: some View {
+        HStack {
+            Text("Achievement Badge")
+                .foregroundStyle(.white)
+
+            Spacer()
+
+            Text(badgeText)
+                .font(.headline)
+                .foregroundStyle(.pink)
+        }
+        .padding()
+        .cardStyle()
+    }
+
+    // MARK: REFLECTION
     private var reflectionCard: some View {
         HStack(alignment: .top, spacing: 12) {
+
             Image(systemName: "bolt.heart.fill")
                 .foregroundStyle(.pink)
 
@@ -158,27 +199,31 @@ struct WeeklySummaryView: View {
             Spacer()
         }
         .padding()
-        .background(Color.white.opacity(0.06))
-        .overlay(
-            RoundedRectangle(cornerRadius: 22)
-                .stroke(Color.pink.opacity(0.20), lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 22))
+        .cardStyle()
     }
 
-    // MARK: PROGRESS CARD
+    // MARK: PROGRESS
     private var progressCard: some View {
         VStack(alignment: .leading, spacing: 14) {
+
             Text("Progress Snapshot")
                 .font(.headline)
                 .foregroundStyle(.white)
 
-            progressRow(title: "Wins This Week", value: store.thisWeekWins, total: 7)
-            progressRow(title: "Mood Check-Ins", value: store.totalMoodEntries, total: max(store.totalMoodEntries, 7))
+            progressRow(
+                title: "Wins This Week",
+                value: store.thisWeekWins,
+                total: 7
+            )
+
+            progressRow(
+                title: "Mood Check-Ins",
+                value: store.totalMoodEntries,
+                total: max(store.totalMoodEntries, 7)
+            )
 
             VStack(alignment: .leading, spacing: 6) {
                 Text("Latest Mood")
-                    .font(.subheadline.weight(.semibold))
                     .foregroundStyle(.white)
 
                 Text(store.latestMood)
@@ -187,26 +232,22 @@ struct WeeklySummaryView: View {
             }
         }
         .padding()
-        .background(Color.white.opacity(0.06))
-        .overlay(
-            RoundedRectangle(cornerRadius: 22)
-                .stroke(Color.pink.opacity(0.20), lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 22))
+        .cardStyle()
     }
 
-    // MARK: STAT CARD
+    // MARK: STAT
     private func statCard(
         title: String,
         value: String,
-        subtitle: String,
         icon: String,
         tint: Color
     ) -> some View {
+
         VStack(alignment: .leading, spacing: 12) {
+
             ZStack {
                 RoundedRectangle(cornerRadius: 14)
-                    .fill(tint.opacity(0.2))
+                    .fill(tint.opacity(0.20))
                     .frame(width: 44, height: 44)
 
                 Image(systemName: icon)
@@ -217,29 +258,25 @@ struct WeeklySummaryView: View {
                 .font(.title.bold())
                 .foregroundStyle(.white)
 
-            VStack(alignment: .leading, spacing: 2) {
-                Text(title)
-                    .foregroundStyle(.white)
+            Text(title)
+                .foregroundStyle(.white)
 
-                Text(subtitle)
-                    .font(.caption)
-                    .foregroundStyle(.white.opacity(0.6))
-            }
+            Spacer()
         }
-        .frame(maxWidth: .infinity, minHeight: 150, alignment: .leading)
+        .frame(maxWidth: .infinity, minHeight: 145)
         .padding()
-        .background(Color.white.opacity(0.06))
-        .overlay(
-            RoundedRectangle(cornerRadius: 22)
-                .stroke(Color.pink.opacity(0.18), lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 22))
-        .shadow(color: tint.opacity(0.20), radius: 10, x: 0, y: 5)
+        .cardStyle()
     }
 
     // MARK: PROGRESS ROW
-    private func progressRow(title: String, value: Int, total: Int) -> some View {
+    private func progressRow(
+        title: String,
+        value: Int,
+        total: Int
+    ) -> some View {
+
         VStack(alignment: .leading, spacing: 6) {
+
             HStack {
                 Text(title)
                     .foregroundStyle(.white)
@@ -250,8 +287,11 @@ struct WeeklySummaryView: View {
                     .foregroundStyle(.white.opacity(0.6))
             }
 
-            ProgressView(value: Double(value), total: Double(max(total, 1)))
-                .tint(.pink)
+            ProgressView(
+                value: Double(value),
+                total: Double(max(total, 1))
+            )
+            .tint(.pink)
         }
     }
 }

@@ -1,3 +1,14 @@
+//
+//  AddMicroWinView.swift
+//  MicroWins
+//
+//  Author: Blen Abebe - 101213539
+//  Edited by:
+//  Shalev Haimovitz
+//  Jonathan Ivanov
+//  Melica Alikhani-Marquet
+//
+
 import SwiftUI
 
 struct AddMicroWinView: View {
@@ -15,23 +26,23 @@ struct AddMicroWinView: View {
         trimmedTitle.isEmpty
     }
 
+    private let quickIdeas = [
+        "Finished homework",
+        "Went for a walk",
+        "Cleaned my room",
+        "Helped someone",
+        "Learned something new"
+    ]
+
     var body: some View {
         ZStack {
-            LinearGradient(
-                colors: [
-                    Color.black,
-                    Color(red: 0.12, green: 0.02, blue: 0.08),
-                    Color(red: 0.18, green: 0.03, blue: 0.10)
-                ],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
+            backgroundView
 
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 22) {
                     topCard
                     inputCard
+                    quickIdeasCard
                     tipsCard
 
                     if showMessage {
@@ -42,10 +53,10 @@ struct AddMicroWinView: View {
                     saveButton
 
                     InfoFooterView()
-                        .padding(.top, 6)
+                        .padding(.top, 8)
                 }
                 .padding()
-                .padding(.bottom, 30)
+                .padding(.bottom, 28)
             }
         }
         .navigationTitle("Add MicroWin")
@@ -55,16 +66,30 @@ struct AddMicroWinView: View {
         .onChange(of: details) { _, _ in showMessage = false }
     }
 
-    // MARK: - TOP CARD
+    private var backgroundView: some View {
+        LinearGradient(
+            colors: [
+                Color.black,
+                Color(red: 0.12, green: 0.02, blue: 0.08),
+                Color(red: 0.18, green: 0.03, blue: 0.10)
+            ],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+        .ignoresSafeArea()
+    }
+
+    // MARK: TOP CARD
     private var topCard: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 14) {
+
             HStack {
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("Capture a small win ✨")
+                    Text("Capture a Small Win ✨")
                         .font(.title2.bold())
                         .foregroundStyle(.white)
 
-                    Text("Small progress builds big results.")
+                    Text("Tiny progress creates big results.")
                         .font(.subheadline)
                         .foregroundStyle(.white.opacity(0.85))
                 }
@@ -74,13 +99,17 @@ struct AddMicroWinView: View {
                 ZStack {
                     Circle()
                         .fill(Color.white.opacity(0.10))
-                        .frame(width: 54, height: 54)
+                        .frame(width: 56, height: 56)
 
                     Image(systemName: "sparkles")
                         .font(.title2)
                         .foregroundStyle(.pink)
                 }
             }
+
+            Text("Write down something positive you did today.")
+                .font(.caption)
+                .foregroundStyle(.white.opacity(0.72))
         }
         .padding(20)
         .background(
@@ -94,18 +123,19 @@ struct AddMicroWinView: View {
                 endPoint: .bottomTrailing
             )
         )
+        .clipShape(RoundedRectangle(cornerRadius: 28))
         .overlay(
             RoundedRectangle(cornerRadius: 28)
                 .stroke(Color.white.opacity(0.08), lineWidth: 1)
         )
-        .clipShape(RoundedRectangle(cornerRadius: 28))
         .shadow(color: .pink.opacity(0.25), radius: 14, x: 0, y: 8)
     }
 
-    // MARK: - INPUT CARD
+    // MARK: INPUT CARD
     private var inputCard: some View {
         VStack(alignment: .leading, spacing: 18) {
-            Text("New MicroWin")
+
+            Text("New Entry")
                 .font(.headline)
                 .foregroundStyle(.white)
 
@@ -114,78 +144,110 @@ struct AddMicroWinView: View {
                     .foregroundStyle(.white.opacity(0.85))
 
                 TextField("What went well today?", text: $title)
+                    .foregroundStyle(.white)
                     .padding()
                     .background(Color.white.opacity(0.08))
                     .clipShape(RoundedRectangle(cornerRadius: 16))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 16)
-                            .stroke(Color.white.opacity(0.08), lineWidth: 1)
-                    )
-                    .foregroundStyle(.white)
             }
 
             VStack(alignment: .leading, spacing: 8) {
                 Text("Details")
                     .foregroundStyle(.white.opacity(0.85))
 
-                TextField("Add a little more detail...", text: $details, axis: .vertical)
-                    .lineLimit(4...7)
-                    .padding()
-                    .background(Color.white.opacity(0.08))
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 16)
-                            .stroke(Color.white.opacity(0.08), lineWidth: 1)
-                    )
-                    .foregroundStyle(.white)
+                TextField(
+                    "Add more details...",
+                    text: $details,
+                    axis: .vertical
+                )
+                .lineLimit(4...7)
+                .foregroundStyle(.white)
+                .padding()
+                .background(Color.white.opacity(0.08))
+                .clipShape(RoundedRectangle(cornerRadius: 16))
             }
         }
         .padding()
-        .background(Color.white.opacity(0.06))
-        .overlay(
-            RoundedRectangle(cornerRadius: 24)
-                .stroke(Color.white.opacity(0.06), lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 24))
+        .cardStyle()
     }
 
-    // MARK: - TIPS
+    // MARK: QUICK IDEAS
+    private var quickIdeasCard: some View {
+        VStack(alignment: .leading, spacing: 14) {
+
+            Text("Quick Ideas")
+                .font(.headline)
+                .foregroundStyle(.white)
+
+            LazyVGrid(
+                columns: [
+                    GridItem(.flexible()),
+                    GridItem(.flexible())
+                ],
+                spacing: 10
+            ) {
+                ForEach(quickIdeas, id: \.self) { idea in
+                    Button {
+                        title = idea
+                    } label: {
+                        Text(idea)
+                            .font(.caption)
+                            .foregroundStyle(.white)
+                            .padding(.vertical, 10)
+                            .frame(maxWidth: .infinity)
+                            .background(Color.pink.opacity(0.18))
+                            .clipShape(RoundedRectangle(cornerRadius: 14))
+                    }
+                }
+            }
+        }
+        .padding()
+        .cardStyle()
+    }
+
+    // MARK: TIPS
     private var tipsCard: some View {
         HStack(alignment: .top, spacing: 12) {
+
             Image(systemName: "lightbulb.fill")
                 .foregroundStyle(.pink)
 
-            Text("Even finishing a small task counts as a win. Progress is built daily.")
+            Text("Even finishing one task counts as progress.")
                 .font(.subheadline)
                 .foregroundStyle(.white.opacity(0.75))
 
             Spacer()
         }
         .padding()
-        .background(Color.white.opacity(0.06))
-        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .cardStyle()
     }
 
-    // MARK: - SUCCESS
+    // MARK: SUCCESS
     private var successCard: some View {
         HStack(spacing: 12) {
+
             Image(systemName: "checkmark.circle.fill")
                 .foregroundStyle(.pink)
 
-            Text("Saved successfully")
-                .foregroundStyle(.white)
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Saved Successfully")
+                    .foregroundStyle(.white)
+
+                Text("Your MicroWin was added.")
+                    .font(.caption)
+                    .foregroundStyle(.white.opacity(0.72))
+            }
 
             Spacer()
         }
         .padding()
-        .background(Color.white.opacity(0.08))
-        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .cardStyle()
     }
 
-    // MARK: - BUTTON
+    // MARK: BUTTON
     private var saveButton: some View {
         Button {
             store.addMicroWin(title: title, details: details)
+
             title = ""
             details = ""
             showMessage = true
@@ -194,6 +256,7 @@ struct AddMicroWinView: View {
                 Spacer()
 
                 Label("Save MicroWin", systemImage: "plus.circle.fill")
+                    .font(.headline)
 
                 Spacer()
             }
@@ -202,8 +265,14 @@ struct AddMicroWinView: View {
             .background(
                 LinearGradient(
                     colors: isSaveDisabled
-                        ? [Color.gray.opacity(0.4), Color.gray.opacity(0.3)]
-                        : [Color.pink, Color(red: 0.80, green: 0.20, blue: 0.50)],
+                    ? [
+                        Color.gray.opacity(0.45),
+                        Color.gray.opacity(0.30)
+                    ]
+                    : [
+                        Color.pink,
+                        Color(red: 0.80, green: 0.20, blue: 0.50)
+                    ],
                     startPoint: .leading,
                     endPoint: .trailing
                 )

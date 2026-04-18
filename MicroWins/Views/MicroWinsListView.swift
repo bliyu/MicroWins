@@ -1,26 +1,44 @@
+//
+//  MicroWinsListView.swift
+//  MicroWins
+//
+//  Author: Blen Abebe - 101213539
+//  Edited by:
+//  Shalev Haimovitz
+//  Jonathan Ivanov
+//  Melica Alikhani-Marquet
+//
+
 import SwiftUI
 
 struct MicroWinsListView: View {
     @EnvironmentObject private var store: MicroWinsStore
 
+    @State private var searchText = ""
+    @State private var sortNewestFirst = true
+
+    private var filteredWins: [MicroWin] {
+        let searched = store.microWins.filter {
+            searchText.isEmpty ||
+            $0.title.localizedCaseInsensitiveContains(searchText) ||
+            $0.details.localizedCaseInsensitiveContains(searchText)
+        }
+
+        return searched.sorted {
+            sortNewestFirst ? $0.date > $1.date : $0.date < $1.date
+        }
+    }
+
     var body: some View {
         ZStack {
-            LinearGradient(
-                colors: [
-                    Color.black,
-                    Color(red: 0.12, green: 0.02, blue: 0.08),
-                    Color(red: 0.18, green: 0.03, blue: 0.10)
-                ],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
+            backgroundView
 
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 22) {
                     topCard
+                    searchCard
 
-                    if store.microWins.isEmpty {
+                    if filteredWins.isEmpty {
                         emptyStateCard
                     } else {
                         winsSection
@@ -30,16 +48,30 @@ struct MicroWinsListView: View {
                         .padding(.top, 6)
                 }
                 .padding()
-                .padding(.bottom, 30)
+                .padding(.bottom, 28)
             }
         }
         .navigationTitle("My Wins")
         .navigationBarTitleDisplayMode(.inline)
     }
 
-    // MARK: - TOP CARD
+    private var backgroundView: some View {
+        LinearGradient(
+            colors: [
+                Color.black,
+                Color(red: 0.12, green: 0.02, blue: 0.08),
+                Color(red: 0.18, green: 0.03, blue: 0.10)
+            ],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+        .ignoresSafeArea()
+    }
+
+    // MARK: TOP CARD
     private var topCard: some View {
         VStack(alignment: .leading, spacing: 14) {
+
             HStack {
                 VStack(alignment: .leading, spacing: 6) {
                     Text("Your Progress ✨")
@@ -56,7 +88,7 @@ struct MicroWinsListView: View {
                 ZStack {
                     Circle()
                         .fill(Color.white.opacity(0.10))
-                        .frame(width: 54, height: 54)
+                        .frame(width: 56, height: 56)
 
                     Image(systemName: "checkmark.seal.fill")
                         .font(.title2)
@@ -81,43 +113,74 @@ struct MicroWinsListView: View {
                 endPoint: .bottomTrailing
             )
         )
+        .clipShape(RoundedRectangle(cornerRadius: 28))
         .overlay(
             RoundedRectangle(cornerRadius: 28)
                 .stroke(Color.white.opacity(0.08), lineWidth: 1)
         )
-        .clipShape(RoundedRectangle(cornerRadius: 28))
         .shadow(color: .pink.opacity(0.25), radius: 14, x: 0, y: 8)
     }
 
-    // MARK: - EMPTY STATE
+    // MARK: SEARCH CARD
+    private var searchCard: some View {
+        VStack(spacing: 14) {
+
+            HStack {
+                Image(systemName: "magnifyingglass")
+                    .foregroundStyle(.pink)
+
+                TextField("Search wins...", text: $searchText)
+                    .foregroundStyle(.white)
+            }
+            .padding()
+            .background(Color.white.opacity(0.08))
+            .clipShape(RoundedRectangle(cornerRadius: 16))
+
+            Button {
+                sortNewestFirst.toggle()
+            } label: {
+                HStack {
+                    Image(systemName: "arrow.up.arrow.down")
+                    Text(sortNewestFirst ? "Newest First" : "Oldest First")
+                }
+                .font(.subheadline.bold())
+                .foregroundStyle(.white)
+                .padding(.vertical, 10)
+                .frame(maxWidth: .infinity)
+                .background(Color.pink.opacity(0.18))
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+            }
+        }
+        .padding()
+        .cardStyle()
+    }
+
+    // MARK: EMPTY
     private var emptyStateCard: some View {
         VStack(spacing: 12) {
+
             Image(systemName: "sparkles")
                 .font(.system(size: 42))
                 .foregroundStyle(.pink)
 
-            Text("No MicroWins yet")
+            Text("No MicroWins Found")
                 .font(.headline)
                 .foregroundStyle(.white)
 
-            Text("Start adding small wins and they’ll appear here.")
+            Text("Try adding a new win or clearing search.")
                 .font(.subheadline)
                 .foregroundStyle(.white.opacity(0.7))
                 .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 32)
-        .background(Color.white.opacity(0.08))
-        .overlay(
-            RoundedRectangle(cornerRadius: 24)
-                .stroke(Color.white.opacity(0.06), lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 24))
+        .cardStyle()
     }
 
-    // MARK: - WINS LIST
+    // MARK: LIST
     private var winsSection: some View {
         VStack(alignment: .leading, spacing: 14) {
+
             HStack {
                 Text("All Wins")
                     .font(.headline)
@@ -125,32 +188,24 @@ struct MicroWinsListView: View {
 
                 Spacer()
 
-                Text("\(store.microWins.count)")
+                Text("\(filteredWins.count)")
                     .font(.caption)
                     .foregroundStyle(.white.opacity(0.6))
             }
 
-            ForEach(store.microWins) { win in
+            ForEach(filteredWins) { win in
                 winCard(win)
             }
         }
     }
 
-    // MARK: - WIN CARD
+    // MARK: CARD
     private func winCard(_ win: MicroWin) -> some View {
         HStack(alignment: .top, spacing: 14) {
+
             ZStack {
                 RoundedRectangle(cornerRadius: 16)
-                    .fill(
-                        LinearGradient(
-                            colors: [
-                                Color.pink.opacity(0.25),
-                                Color.white.opacity(0.08)
-                            ],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                    .fill(Color.pink.opacity(0.20))
                     .frame(width: 52, height: 52)
 
                 Image(systemName: "checkmark.seal.fill")
@@ -158,6 +213,7 @@ struct MicroWinsListView: View {
             }
 
             VStack(alignment: .leading, spacing: 8) {
+
                 Text(win.title)
                     .font(.headline)
                     .foregroundStyle(.white)
@@ -166,25 +222,26 @@ struct MicroWinsListView: View {
                     .font(.subheadline)
                     .foregroundStyle(.white.opacity(0.75))
 
-                Text(win.date.formatted(date: .abbreviated, time: .shortened))
-                    .font(.caption)
-                    .foregroundStyle(.white.opacity(0.55))
+                Text(
+                    win.date.formatted(
+                        date: .abbreviated,
+                        time: .shortened
+                    )
+                )
+                .font(.caption)
+                .foregroundStyle(.white.opacity(0.55))
             }
 
             Spacer()
         }
         .padding()
-        .background(Color.white.opacity(0.08))
-        .overlay(
-            RoundedRectangle(cornerRadius: 22)
-                .stroke(Color.white.opacity(0.06), lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 22))
+        .cardStyle()
     }
 
-    // MARK: - SUMMARY PILL
+    // MARK: PILL
     private func summaryPill(title: String, value: String) -> some View {
         VStack(spacing: 4) {
+
             Text(value)
                 .font(.headline)
                 .foregroundStyle(.white)

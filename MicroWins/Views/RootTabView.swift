@@ -3,8 +3,10 @@
 //  MicroWins
 //
 //  Author: Blen Abebe - 101213539
-//  Team edits:
-//  - Add teammate names and edits here when needed.
+//  Edited by:
+//  Shalev Haimovitz
+//  Jonathan Ivanov
+//  Melica Alikhani-Marquet
 //
 
 import SwiftUI
@@ -68,5 +70,7 @@ struct RootTabView: View {
             }
         }
         .tint(.pink)
+        .toolbarBackground(.black, for: .tabBar)
+        .toolbarBackground(.visible, for: .tabBar)
     }
 }
